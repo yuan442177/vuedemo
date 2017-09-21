@@ -33,7 +33,7 @@ export default new Router({
           {
             path:'/hi/Hi1',
             name:'Hi',
-            components: {        //对应组件模板
+            components: {        //路由中的路由
               left:Hi1,
               right:Hi
             },
