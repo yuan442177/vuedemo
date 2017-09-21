@@ -4,6 +4,7 @@ import Hello from '@/components/Hello'  //引入根目录下的Hello.vue组件
 import Hi from '@/components/Hi'
 import Hi1 from '@/components/Hi1'
 import Hi2 from '@/components/Hi2'
+import params from '@/components/params'
 
 Vue.use(Router) //vue全局使用router
 
@@ -17,7 +18,10 @@ export default new Router({
         left:Hi1,
         right:Hi2
       },
-
+    },
+    {
+      path:'/params/:newsId/:newsTitle',
+      component:params
     },
     {
       path:'/hi',
