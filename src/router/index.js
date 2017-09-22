@@ -5,6 +5,10 @@ import Hi from '@/components/Hi'
 import Hi1 from '@/components/Hi1'
 import Hi2 from '@/components/Hi2'
 import params from '@/components/params'
+import Hi1a from '@/components/Hi1a'
+import Hi1b from '@/components/Hi1b'
+import Error from '@/components/Error'
+import count from '@/components/count'
 
 Vue.use(Router) //vue全局使用router
 
@@ -18,6 +22,12 @@ export default new Router({
         left: Hi1,
         right: Hi2
       },
+      beforeEnter:(to,from,next)=>{
+        console.log('error')
+        console.log(to)
+        console.log(from)
+        next()
+      }
     },
     {
       path: '/params/:newsId/:newsTitle',
@@ -29,8 +39,8 @@ export default new Router({
       alias: '/Yuan', //别名 在path为'/'时 无效
       components: { //对应组件模板
         default: Hi,
-        left: Hi1,
-        right: Hi2
+        left: Hi1a,
+        right: Hi1b
       },
       children: [ //表示hi1和hi2为hi的子集 但是根据path的设置 访问时并感觉不到
         {
@@ -44,12 +54,12 @@ export default new Router({
             path: '/a',
             name: 'Hi',
             components: { //路由中的路由
-              left: Hi1,
-              right: Hi
+              left: Hi1a,
+              right: Hi1b
             },
           }]
         },
-        
+
         {
           path: '/hi2',
           name: 'hi2',
@@ -58,5 +68,15 @@ export default new Router({
         }, //redirect 重定向 可以输入参数
       ]
     },
+    {
+      path:'*',
+      component:Error
+    },
+    {
+      path:'/count',
+      components:{
+        count:count
+      }
+    }
   ]
 })
